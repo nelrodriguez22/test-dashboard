@@ -1,10 +1,14 @@
 import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const App = () => {
-	const authenticated = false;
+	const userData = useSelector((state) => state.user);
+	
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -12,7 +16,7 @@ const App = () => {
 				<Route
 					path="/dashboard"
 					element={
-						authenticated === true ? (
+						userData.isAdmin === true ? (
 							<Dashboard />
 						) : (
 							<Navigate to="/" />
