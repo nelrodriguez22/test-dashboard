@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	isAdmin:false
+	isAdmin:false,
+	time: '',
 };
 
 export const userSlice = createSlice({
@@ -10,6 +11,7 @@ export const userSlice = createSlice({
 	reducers: {
 		login: (state, action) => {
 			state.isAdmin = action.payload.isAdmin;
+			state.time = action.payload.time;
 		}
 	},
 });

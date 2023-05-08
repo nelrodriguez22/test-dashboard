@@ -1,11 +1,12 @@
 import {useState} from "react";
-import Button from "../components/Button";
-import Input from "../components/Input";
-import Span from "../components/Span";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
+import Span from "../components/ui/Span";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/userSlice";
 import {useNavigate} from "react-router-dom";
-import { toastFn } from "../utils/Toast";
+import { toastFn } from "../utils/toast";
+
 const Login = () => {
 	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
@@ -38,7 +39,9 @@ const Login = () => {
 			}
 		} else {
 			setError(false);
-			dispatch(login({ isAdmin: true }));
+			dispatch(login({ isAdmin: true, time: new Date().toLocaleString()}));
+			sessionStorage.setItem("isAdmin", true);
+			sessionStorage.setItem("LoginTime", new Date().toLocaleString());
 			toastFn({success:true})
 			navigate('/dashboard');
 		}
@@ -50,8 +53,8 @@ const Login = () => {
 	};
 
 	return (
-				<div className="flex items-center justify-center h-screen text-slate-700 ">
-					<div className="flex flex-col gap-2 justify-center content-center border rounded-md w-2/5 h-2/5 border-sky-500">
+				<section className="flex items-center justify-center h-screen text-slate-700 bg-gradient-to-t from-cyan-500 to-blue-500">
+					<div className="flex flex-col gap-2 justify-center content-center border rounded-md w-full md:w-2/5 h-2/5  bg-white">
 						<h1 className="place-self-center mb-10 font-bold text-xl text-sky-600">
 							Login
 						</h1>
@@ -94,7 +97,7 @@ const Login = () => {
 							)}
 						</div>
 					</div>
-				</div>
+				</section>
 	);
 };
 

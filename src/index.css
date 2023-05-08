@@ -7,9 +7,16 @@
 @tailwind utilities;
 
 
-html,
-body,
-:root{
-	height: 100vh;
-	width: 100vw;
+input:invalid[focused="false"] ~ span{
+	display: none;
+}
+input:valid ~ span{
+	display: none;
+}
+input:invalid[focused="true"] ~ span{
+	display: block;
+}
+
+input:invalid[focused="true"]{
+    border: 1px solid #bf1531;
 }

@@ -1,13 +1,13 @@
-import Dashboard from "./routes/Dashboard";
-import Login from "./routes/Login";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import { useSelector } from "react-redux";
 
 
 const App = () => {
-	const userData = useSelector((state) => state.user);
+	const isAdmin = sessionStorage.getItem("isAdmin");
+	
 	
 	return (
 		<BrowserRouter>
@@ -16,7 +16,7 @@ const App = () => {
 				<Route
 					path="/dashboard"
 					element={
-						userData.isAdmin === true ? (
+						isAdmin  ? (
 							<Dashboard />
 						) : (
 							<Navigate to="/" />
