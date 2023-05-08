@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Cookies from 'js-cookie';
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import Span from "../components/ui/Span";
@@ -39,9 +40,10 @@ const Login = () => {
 			}
 		} else {
 			setError(false);
+			setInvalid(false);
 			dispatch(login({ isAdmin: true, time: new Date().toLocaleString()}));
-			sessionStorage.setItem("isAdmin", true);
-			sessionStorage.setItem("LoginTime", new Date().toLocaleString());
+			Cookies.set('isAdmin', true, { expires: 7 });
+			Cookies.set('LoginTime',new Date().toLocaleString(), { expires: 7 });
 			toastFn({success:true})
 			navigate('/dashboard');
 		}

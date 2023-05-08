@@ -4,13 +4,14 @@ import {useState} from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const time = sessionStorage.getItem("LoginTime");
+	const time = Cookies.get("LoginTime");
 
 	const handleSession = () => {
 		dispatch(login({ isAdmin: false, time: ''}));
