@@ -60,7 +60,7 @@ const Login = () => {
 						<h1 className="place-self-center mb-10 font-bold text-xl text-sky-600">
 							Login
 						</h1>
-						<Span label={"Nombre:"} />
+						<div><Span label={"Nombre:"} /></div>
 						{invalid ? (
 							<Input text invalid value={name} />
 						) : (
@@ -70,7 +70,7 @@ const Login = () => {
 								onChange={(e) => setName(e.target.value)}
 							/>
 						)}
-						<Span label={"Contraseña:"} />
+						<div><Span label={"Contraseña:"} /></div>
 						{invalid ? (
 							<Input invalid value={password} />
 						) : (

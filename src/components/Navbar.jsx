@@ -15,7 +15,7 @@ const Navbar = () => {
 
 	const handleSession = () => {
 		dispatch(login({ isAdmin: false, time: ''}));
-		sessionStorage.setItem("isAdmin", false);
+		Cookies.set("isAdmin", false);
 		navigate('/');
 	}
 
